@@ -12,13 +12,6 @@ import {RouterLink, RouterView} from 'vue-router'
 </template>
 
 <style lang="scss">
-#app {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2rem;
-      font-weight: normal;
-}
-
 /*
   Enter and leave animations can use different
   durations and timing functions.
