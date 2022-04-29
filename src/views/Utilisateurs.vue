@@ -190,7 +190,7 @@ const directory = {
                                     </div>
                                     <ul role="list" class="relative z-0 divide-y divide-gray-200">
                                           <li v-for="person in directory[letter]" :key="person.id" class="bg-white">
-                                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 outline-none focus-within:bg-opacity-5 focus-within:bg-pink-600">
                                                       <div class="flex-shrink-0">
                                                             <img class="h-10 w-10 rounded-full" :src="person.imageUrl" alt="" />
                                                       </div>
