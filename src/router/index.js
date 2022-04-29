@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/Dashboard.vue'
 
 const router = createRouter({
@@ -28,6 +28,16 @@ const router = createRouter({
                   path: '/utilisateur/:id',
                   name: 'utilisateur',
                   component: () => import('../views/Utilisateur.vue'),
+            },
+            {
+                  path: '/tutoriels',
+                  name: 'tutoriels',
+                  component: () => import('../views/Tutoriels.vue'),
+            },
+            {
+                  path: '/medias',
+                  name: 'medias',
+                  component: () => import('../views/Medias.vue'),
             },
             {
                   path: '/:pathMatch(.*)*',
