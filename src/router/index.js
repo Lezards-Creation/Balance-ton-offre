@@ -53,9 +53,4 @@ const router = createRouter({
       ],
 })
 
-router.beforeEach((to) => {
-      const user = useUser()
-      console.log(user.user)
-})
-
 export default router

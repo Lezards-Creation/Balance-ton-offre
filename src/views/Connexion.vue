@@ -13,24 +13,25 @@ const reponse = ref()
 const trying = ref(false)
 // ACTIONS
 const handleLogin = (e) => {
-      trying.value = true
-      user.connect({
-            username: email,
-            password,
-      })
-            .then((res) => {
-                  trying.value = false
-                  if (!res) {
-                        reponse.value = 'Désolé, mais les identifiants semblent incorrects'
-                  } else {
-                        reponse.value = `Bonjour ${res.nickname} !`
-                        router.push({ name: 'dashboard' })
-                  }
-            })
-            .catch((err) => {
-                  trying.value = false
-                  reponse.value = err
-            })
+      router.push({ name: 'dashboard' })
+      // trying.value = true
+      // user.connect({
+      //       username: email,
+      //       password,
+      // })
+      //       .then((res) => {
+      //             trying.value = false
+      //             if (!res) {
+      //                   reponse.value = 'Désolé, mais les identifiants semblent incorrects'
+      //             } else {
+      //                   reponse.value = `Bonjour ${res.nickname} !`
+      //                   router.push({ name: 'dashboard' })
+      //             }
+      //       })
+      //       .catch((err) => {
+      //             trying.value = false
+      //             reponse.value = err
+      //       })
 }
 </script>
 <template>
@@ -39,6 +40,7 @@ const handleLogin = (e) => {
                   <div>
                         <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Connectez-vous</h2>
+                        <i class="fa-regular fa-spinner-third fa-spin"></i>
                         <p class="mt-2 text-center text-sm text-gray-600">
                               ou
                               {{ ' ' }}
@@ -90,7 +92,7 @@ const handleLogin = (e) => {
                                     type="submit"
                                     class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-all translate-y-1 duration-300">
                                     <span v-if="!trying">Connexion</span>
-                                    <span v-else><i class="fa-regular fa-spinner-third fa-spin"></i></span>
+                                    <span v-else>...</span>
                               </button>
                         </div>
 
