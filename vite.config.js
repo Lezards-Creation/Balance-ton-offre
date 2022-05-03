@@ -10,8 +10,7 @@ export default defineConfig({
       css: {
             preprocessorOptions: {
                   scss: {
-                        additionalData: `@import "./src/assets/css/main";`,
-                        additionalData: `@import "./src/assets/css/fontawesome";`,
+                        additionalData: `@import "./src/assets/css/main"; @import "./src/assets/css/fontawesome";`,
                   },
             },
       },

@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useUser } from '../stores/user'
 import HomeView from '../views/Dashboard.vue'
-
+import ConnexionVue from '../views/Connexion.vue'
+import OffreVue from '../views/Offre.vue'
+import UtilisateursVue from '../views/Utilisateurs.vue'
+import UtilisateurVue from '../views/Utilisateur.vue'
+import TutorielsVue from '../views/Tutoriels.vue'
+import MediasVue from '../views/Medias.vue'
 const router = createRouter({
       history: createWebHistory(import.meta.env.BASE_URL),
       routes: [
@@ -12,32 +18,32 @@ const router = createRouter({
             {
                   path: '/connexion',
                   name: 'connexion',
-                  component: () => import('../views/Connexion.vue'),
+                  component: ConnexionVue,
             },
             {
                   path: '/offre/:slug',
                   name: 'offre',
-                  component: () => import('../views/Offre.vue'),
+                  component: OffreVue,
             },
             {
                   path: '/utilisateurs',
                   name: 'utilisateurs',
-                  component: () => import('../views/Utilisateurs.vue'),
+                  component: UtilisateursVue,
             },
             {
                   path: '/utilisateur/:id',
                   name: 'utilisateur',
-                  component: () => import('../views/Utilisateur.vue'),
+                  component: UtilisateurVue,
             },
             {
                   path: '/tutoriels',
                   name: 'tutoriels',
-                  component: () => import('../views/Tutoriels.vue'),
+                  component: TutorielsVue,
             },
             {
                   path: '/medias',
                   name: 'medias',
-                  component: () => import('../views/Medias.vue'),
+                  component: MediasVue,
             },
             {
                   path: '/:pathMatch(.*)*',
@@ -45,6 +51,11 @@ const router = createRouter({
                   component: () => import('../views/Introuvable.vue'),
             },
       ],
+})
+
+router.beforeEach((to) => {
+      const user = useUser()
+      console.log(user.user)
 })
 
 export default router

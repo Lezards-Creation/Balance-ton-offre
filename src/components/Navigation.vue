@@ -2,9 +2,9 @@
 import { Dialog, DialogOverlay, Menu, MenuButton, MenuItem, MenuItems, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ClockIcon, HomeIcon, MenuAlt1Icon, PhotographIcon, UserIcon, XIcon, AcademicCapIcon } from '@heroicons/vue/outline'
 import { useRoute } from 'vue-router'
-
+import { useUser } from '../stores/user'
 const route = useRoute()
-
+const user = useUser()
 const navigation = [
       { name: 'Dashboard', href: '/', icon: HomeIcon, current: route.path === '/' },
       { name: 'Utilisateurs', href: '/utilisateurs', icon: UserIcon, current: route.path === '/utilisateurs' },
@@ -29,14 +29,14 @@ const secondaryNavigation = [
             <div class="mt-6 h-0 flex-1 flex flex-col justify-between overflow-y-auto">
                   <div class="block">
                         <Menu as="div" class="px-3 mt-3 relative w-full block text-left">
-                              <router-link to="/utilisateur/1">
+                              <router-link to="/utilisateur/1" v-if="user.user">
                                     <MenuButton class="group w-full rounded-md px-3.5 py-2 text-sm text-left font-medium text-white focus:outline-none hover:bg-pink-700">
                                           <span class="flex w-full justify-between items-center">
                                                 <span class="flex min-w-0 items-center justify-between space-x-3">
                                                       <img class="w-10 h-10 rounded-full flex-shrink-0" src="https://lezardscreation.com/signatures/matthieu.png" alt="" />
                                                       <span class="flex-1 flex flex-col min-w-0">
-                                                            <span class="text-slate-100 text-sm font-medium truncate">Matthieu ANDRE</span>
-                                                            <span class="text-slate-300 text-sm truncate">@matthieu</span>
+                                                            <span class="text-slate-100 text-sm font-medium truncate">{{ user.user.first_name }} {{ user.user.last_name.toUpperCase() }}</span>
+                                                            <span class="text-slate-300 text-sm truncate">{{ user.user.nickname }}</span>
                                                       </span>
                                                 </span>
                                                 <SelectorIcon class="flex-shrink-0 h-5 w-5 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />

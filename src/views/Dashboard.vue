@@ -3,7 +3,8 @@ import { ref } from 'vue'
 import { Dialog, DialogOverlay, Menu, MenuButton, MenuItem, MenuItems, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ClockIcon, HomeIcon, MenuAlt1Icon, ViewListIcon, XIcon } from '@heroicons/vue/outline'
 import { ChevronRightIcon, DotsVerticalIcon, SearchIcon, SelectorIcon } from '@heroicons/vue/solid'
-
+import { useCounterStore } from '../stores/counter'
+const counter = useCounterStore()
 const projects = [
       {
             id: 1,
@@ -128,6 +129,12 @@ const pinnedProjects = projects.filter((project) => project.pinned)
                               </div>
                         </div>
                   </div>
+                  <div class="p-6">
+                        <h1 class="text-xl font-bold">Test PINIA State</h1>
+                        {{ counter.counter }}
+                        <button @click="counter.increment" class="py-1 px-3 bg-white shadow">Increment</button>
+                  </div>
+
                   <main class="flex-1">
                         <!-- Page title & actions -->
                         <div class="border-b border-gray-200 px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
